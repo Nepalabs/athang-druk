@@ -1,13 +1,12 @@
 const Food = require("../models/food.model");
 const Food = require("../models/food.model");
 
-const getFoods = async (loggedInUserId, filter = {}) => {
+const getAllFoods = async (loggedInUserId, filter = {}) => {
   const foods = await Food.find({ userId: loggedInUserId, ...filter });
   return foods;
 };
 
-
-const getFoodsById = async (id, loggedInUserId) => {
+const getFoodById = async (id, loggedInUserId) => {
   const food = await Food.findOne({ _id: id, userId: loggedInUserId });
   return food;
 };
@@ -20,9 +19,10 @@ const createFood = async (newFood, loggedInUserId) => {
 };
 
 const updateFoodById = async (id, newFood, loggedInUserId) => {
-const update=await Food.updateOne(
-{_id:id, userId: loggedInUserId},
-{$set:newFood});
+  const update = await Food.updateOne(
+    { _id: id, userId: loggedInUserId },
+    { $set: newFood }
+  );
   if (update.matchedCount > 0) {
     const updateFood = await Food.findOne({ _id: id });
     return updateFood;
@@ -30,7 +30,6 @@ const update=await Food.updateOne(
     return;
   }
 };
-
 
 const deleteFoodById = async (id, loggedInUser) => {
   const deleted = await Food.deleteOne({ _id: id, userId: loggedInUser });
@@ -42,9 +41,9 @@ const deleteFoodById = async (id, loggedInUser) => {
 };
 
 module.exports = {
-  getFoods,
-  getFoodsById,
+  getAllFoods,
+  getFoodById,
   createFood,
   updateFoodById,
-  deleteFoodById
+  deleteFoodById,
 };
