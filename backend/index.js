@@ -1,4 +1,8 @@
 const express = require("express");
+const connectMongoDB = require("./src/db/mongo.db");
+
+
+connectMongoDB();
 
 const app = express();
 const PORT = 3000;
