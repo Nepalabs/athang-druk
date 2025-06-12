@@ -1,5 +1,4 @@
 const Food = require("../models/food.model");
-const Food = require("../models/food.model");
 
 const getAllFoods = async (loggedInUserId, filter = {}) => {
   const foods = await Food.find({ userId: loggedInUserId, ...filter });
