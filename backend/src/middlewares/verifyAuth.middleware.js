@@ -3,6 +3,7 @@ const { verifyJWTToken } = require("../utils/jwt.util");
 
 const verifyAuth = async (req, res, next) => {
   const authHeader = req.headers.authorization;
+
   if (!authHeader) {
     return res
       .status(401)
@@ -13,8 +14,8 @@ const verifyAuth = async (req, res, next) => {
       .status(401)
       .json({ message: `Please provide token in valid format` });
   }
-  const token = authHeader.split(" ")[1]; //Get second element from the array
-  console.log(token);
+  const token = authHeader.split(" ")[1];
+
   if (!token || token === "null" || token === "undefined") {
     return res.status(401).json({ message: `Please provide token` });
   }

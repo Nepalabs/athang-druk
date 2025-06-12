@@ -75,7 +75,7 @@ const updateFoodById = async (req, res) => {
   const newFood = req.body;
 
   const keys = Object.keys(newFood);
-  const requiredKeys = ["name", "ingredient", "steps", "cuisine"];
+  const requiredKeys = ["name", "ingredients", "steps", "cuisine"];
   const missingKeys = requiredKeys.filter((key) => !keys.includes(key));
 
   if (missingKeys.length > 0) {
