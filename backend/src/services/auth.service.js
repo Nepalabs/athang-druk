@@ -39,7 +39,7 @@ const signUp = async (data) => {
   return { User: savedUser };
 };
 
-const signout = async (token) => {
+const signOut = async (token) => {
   const newToken = new RevokedToken({ token });
   await newToken.save();
 };
@@ -50,4 +50,4 @@ const getLoggedInUser = async (userId) => {
   return user;
 };
 
-module.exports = { signIn, signUp, signout, getLoggedInUser };
+module.exports = { signIn, signUp, signOut, getLoggedInUser };

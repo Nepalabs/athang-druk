@@ -1,10 +1,10 @@
-const foodsService = require("../servers/food.service");
+const foodService = require("../services/food.service");
 
 const deleteFoodById = async (req, res) => {
   const user = req.user;
 
   const id = req.params.id;
-  const isDeleted = await foodsService.deleteFoodById(id, user._id);
+  const isDeleted = await foodService.deleteFoodById(id, user._id);
   if (isDeleted) {
     res.json({ message: `Food ${id} deleted successfully` });
   } else {
@@ -21,7 +21,7 @@ const getAllFoods = async (req, res) => {
     filter.completed = completed === "true";
   }
 
-  const foods = await foodsService.getAllFoods(user._id, filter);
+  const foods = await foodService.getAllFoods(user._id, filter);
   res.json({ foods });
 };
 
@@ -30,7 +30,7 @@ const getFoodById = async (req, res) => {
 
   const user = req.user;
 
-  const food = await foodsService.getFoodById(id, user._id);
+  const food = await foodService.getFoodById(id, user._id);
 
   if (food) {
     res.json(food);
@@ -59,7 +59,7 @@ const createFood = async (req, res) => {
       message: `Please provide all information: ${missingKeys.join(",")}`,
     });
   }
-  const createdFood = await foodsService.createFood(newFood, user._id);
+  const createdFood = await foodService.createFood(newFood, user._id);
   res.status(201).json({ message: "New food added", Food: createdFood });
 };
 
@@ -84,7 +84,7 @@ const updateFoodById = async (req, res) => {
     });
   }
 
-  const updateFood = await foodsService.updateFoodById(id, newFood, user._id);
+  const updateFood = await foodService.updateFoodById(id, newFood, user._id);
 
   if (updateFood) {
     res.json({

@@ -39,15 +39,15 @@ const signUp = async (req, res) => {
     });
   }
 
+  const keys = Object.keys(req.body);
   const { email, password } = req.body;
 
-  const keys = Object.keys(req.body);
   const requireKeys = ["name", "phoneNumber", "email", "password"];
   const missingKeys = requireKeys.filter((key) => !keys.includes(key));
 
   if (missingKeys.length > 0) {
     return res.status(400).json({
-      message: `Please provide all information: ${missingKeys.join(", ")}`,
+      message: `Please provide all information: ${missingKeys.join(",")}`,
     });
   }
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!#$%@*]).{8,}$/;
@@ -73,6 +73,7 @@ const signUp = async (req, res) => {
   }
   res.status(201).json({ message: `User with ${email} created successfully` });
 };
+
 const signOut = async (req, res) => {
   const authHeader = req.headers.authorization;
   const token = authHeader.split(" ")[1];
