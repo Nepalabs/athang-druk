@@ -1,20 +1,30 @@
 const express = require("express");
+const cors = require("cors");
 const connectMongoDB = require("./db/mongo.db");
 const authRoutes = require("./routes/auth.route");
 const foodRoutes = require("./routes/food.routes");
 
+const PORT = 3000;
 connectMongoDB();
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use("/auth", authRoutes);
 app.use("/food", foodRoutes);
 
-app.get("/", (req, res) => {
-  res.send(`Server is up and running`);
-});
+app.get("/health", (_req, res) => res.send("Server is healthy, its connected"));
+app.get("/api/test", (_req, res) =>
+  res.json({ message: "CORS from 6000 works!" })
+);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
