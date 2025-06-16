@@ -1,16 +1,16 @@
 import axios from "../config/axiosConfig";
 
 const getAllFoods = () => {
-  return axios.get("/foods");
+  return axios.get("/food");
 };
 const createFood = (data) => {
-  return axios.post("/foods/", data);
+  return axios.post("/food/", data);
 };
-const deleteFood = () => {
-  return axios.delete(`"/foods/${id}"`);
+const deleteFood = (id) => {
+  return axios.delete(`/food/${id}`);
 };
 const updateFood = (id, data) => {
-  return axios.put(`/foods/${id}`, data);
+  return axios.put(`/food/${id}`, data);
 };
 
 export { getAllFoods, updateFood, deleteFood, createFood };
