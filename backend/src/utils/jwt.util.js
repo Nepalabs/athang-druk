@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
+const { jwtSecret } = require("../config");
 
-const JWT_SECRET = "Secret";
+const JWT_SECRET=jwtSecret;
 
 const createJWTToken = (data) => {
   return jwt.sign(data, JWT_SECRET);
