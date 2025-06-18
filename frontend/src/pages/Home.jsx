@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { createFood, deleteFood, getAllFoods, updateFood } from "../api/api";
+import { Link } from "react-router-dom";
 
 const initialData = {
   name: "",
@@ -88,6 +89,9 @@ const Home = () => {
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
+        <Link to="/about" className="about-button">
+            About
+          </Link>
         </div>
       </nav>
       <div className="food-container">

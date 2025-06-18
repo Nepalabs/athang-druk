@@ -47,7 +47,18 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
+    <div >
+      <nav className="navbar">
+        <div className="logo">Druk Food Recipe</div>
+        <div className="nav-right">
+          <Link to="/about" className="logout-button">
+            About
+          </Link>
+        </div>
+      </nav>
+
+      <div className="register-container">
+
       <form onSubmit={handleSubmit} className="register-form">
         <h2 className="register-title">Register</h2>
         <label>
@@ -122,6 +133,7 @@ const Register = () => {
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
+      </div>
     </div>
   );
 };
