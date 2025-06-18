@@ -7,7 +7,7 @@ const axios = _axios.create({
 
 axios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("lwp-token");
+    const token = localStorage.getItem("drukdragon-token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

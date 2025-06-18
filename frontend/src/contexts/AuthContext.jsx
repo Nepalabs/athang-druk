@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const getLoggedInUser = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem("lwp-token");
+      const token = localStorage.getItem("drukdragon-token");
       if (!token) {
         setLoggedIn(false);
         setLoading(false);
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const token = localStorage.getItem("lwp-token");
+      const token = localStorage.getItem("drukdragon-token");
       if (!token) {
         setLoggedIn(false);
         setLoading(false);
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
 
       setLoggedIn(false);
       setUser({});
-      localStorage.setItem("lwp-token", "");
+      localStorage.setItem("drukdragon-token", "");
     } catch (error) {
       console.error(error);
       setLoggedIn(false);
