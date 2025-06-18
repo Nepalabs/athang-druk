@@ -217,6 +217,18 @@
   font-style: italic;
 }
 
+.about-button{
+  background-color: white;
+  color: #007bff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+
+}
+
 .logout-button {
   background-color: white;
   color: #007bff;

@@ -8,6 +8,7 @@ const initialData = {
   password: "",
 };
 
+
 const Login = () => {
   const { getLoggedInUser } = useAuth();
   const navigate = useNavigate();
@@ -37,33 +38,43 @@ const Login = () => {
     }
   };
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <h2 className="login-title">Login</h2>
-        <label>
-          Email
-          <input
-            type="text"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          Password
-          <input
-            type="text"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        {error && <p className="register-error"> {error}</p>}
-        <button type="submit">Login</button>
-        <p className="login-link">
-          Dont have an account? <Link to="/register">Register</Link>
-        </p>
-      </form>
+    <div>
+      <nav className="navbar">
+        <div className="logo">Druk Food Recipe</div>
+        <div className="nav-right">
+          <Link to="/about" className="logout-button">
+            About
+          </Link>
+        </div>
+      </nav>
+      <div className="login-container">
+        <form onSubmit={handleSubmit} className="login-form">
+          <h2 className="login-title">Login</h2>
+          <label>
+            Email
+            <input
+              type="text"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            Password
+            <input
+              type="text"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </label>
+          {error && <p className="register-error"> {error}</p>}
+          <button type="submit">Login</button>
+          <p className="login-link">
+            Dont have an account? <Link to="/register">Register</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
