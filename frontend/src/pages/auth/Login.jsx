@@ -8,7 +8,6 @@ const initialData = {
   password: "",
 };
 
-
 const Login = () => {
   const { getLoggedInUser } = useAuth();
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const Login = () => {
       console.log(response.data);
       setError("");
       setFormData({ ...initialData });
-      localStorage.setItem("lwp-token", response.data.token);
+      localStorage.setItem("drukdragon-token", response.data.token);
       await getLoggedInUser();
       navigate("/");
     } catch (error) {

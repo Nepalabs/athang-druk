@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
+import Home from "../pages";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import { useAuth } from "../contexts/AuthContext";
@@ -24,7 +24,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/login" Component={Login} />
       <Route path="/register" Component={Register} />
-      <Route path="/about" element={<About />} />
+      <Route path="/about" Component={About} />
       <Route
         path="/"
         element={
