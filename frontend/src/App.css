@@ -272,7 +272,7 @@ h1 {
 }
 
 .completed {
-  color: green;
+  color:green;
   font-size: 0.9em;
 }
 
@@ -321,7 +321,7 @@ h1 {
 }
 
 .form-actions {
-  display: flex;
+ display: flex;
   justify-content: flex-end;
   gap: 10px;
 }

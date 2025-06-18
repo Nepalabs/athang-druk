@@ -38,7 +38,7 @@ const Home = () => {
     }
   };
 
-  const hendleDelete = async (id) => {
+  const handleDelete = async (id) => {
     try {
       const response = await deleteFood(id);
       if (response && response.data) {
@@ -82,7 +82,7 @@ const Home = () => {
   return (
     <div>
       <nav className="navbar">
-        <div className="logo">Food Recipe</div>
+        <div className="logo">Druk Food Recipe</div>
         <div className="nav-right">
           <span className="user-info"> {user?.name || "User"}</span>
           <button className="logout-button" onClick={handleLogout}>
@@ -114,7 +114,7 @@ const Home = () => {
                   </button>
                   <button
                     className="delete-button"
-                    onClick={() => hendleDelete(food._id)}
+                    onClick={() => handleDelete(food._id)}
                   >
                     Delete
                   </button>
@@ -129,6 +129,11 @@ const Home = () => {
         {isDialogOpen && (
           <div className="dialog-overlay">
             <div className="dialog">
+              <div style={{ display: "flex", justifyContent: "end" }}>
+                <button type="button" onClick={() => handleDialog(false)}>
+                  x
+                </button>
+              </div>
               <h2>{isUpdate ? "Update Food" : "Add Food"}</h2>
               <form className="food-form" onSubmit={handleSubmit}>
                 <input
@@ -176,21 +181,7 @@ const Home = () => {
                   </select>
                 </label>
 
-                {isUpdate && (
-                  <label className="checkbox-label">
-                    <input
-                      type="checkbox"
-                      name="completed"
-                      checked={form.completed}
-                      onChange={handleChange}
-                    />
-                    <span>Completed</span>
-                  </label>
-                )}
                 <div className="form-action">
-                  <button type="button" onClick={() => handleDialog(false)}>
-                    Cancel
-                  </button>
                   <button type="submit">{isUpdate ? "Update" : "Add"}</button>
                 </div>
               </form>
