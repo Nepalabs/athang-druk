@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { createFood, deleteFood, getAllFoods, updateFood } from "../api/api";
 import { Link } from "react-router-dom";
+import Nav from "../components/Nav";
 
 const initialData = {
   name: "",
@@ -60,7 +61,6 @@ const Home = () => {
       e.preventDefault();
       let response;
       if (isUpdate) {
-  
         response = await updateFood(form._id, form);
       } else {
         response = await createFood(form);
@@ -82,21 +82,9 @@ const Home = () => {
 
   return (
     <div>
-      <nav className="navbar">
-        <div className="logo">Druk Food Recipe</div>
-        <div className="nav-right">
-          <span className="user-info"> {user?.name || "User"}</span>
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
-            <Link to="/profile" className="about-button">
-            Profile
-          </Link>
-        <Link to="/about" className="about-button">
-            About
-          </Link>
-        </div>
-      </nav>
+      <>
+        <Nav />
+      </>
       <div className="food-container">
         <h1>Food Recipe List</h1>
         <button className="add-button" onClick={() => handleDialog(true)}>
