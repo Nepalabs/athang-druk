@@ -123,7 +123,7 @@ const About = () => {
         <p>
           Whether you're a seasoned cook or just getting started, our curated
           recipes, tips, and community support will help you on your culinary
-          journey.Our team loves bonding over good food — exploring local
+          journey. Our team loves bonding over good food — exploring local
           flavors, new cuisines, and hidden gems together. And Nothing brings us
           closer than shared laughter and shared plates — food adventures are
           our team tradition!!!
