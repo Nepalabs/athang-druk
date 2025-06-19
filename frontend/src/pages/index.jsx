@@ -60,7 +60,7 @@ const Home = () => {
       e.preventDefault();
       let response;
       if (isUpdate) {
-        // update
+  
         response = await updateFood(form._id, form);
       } else {
         response = await createFood(form);
@@ -89,6 +89,9 @@ const Home = () => {
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
+            <Link to="/profile" className="about-button">
+            Profile
+          </Link>
         <Link to="/about" className="about-button">
             About
           </Link>

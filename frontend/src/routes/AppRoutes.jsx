@@ -5,6 +5,7 @@ import Register from "../pages/auth/Register";
 import { useAuth } from "../contexts/AuthContext";
 import Loading from "../components/Loading";
 import About from "../pages/About";
+import Profile from "../pages/auth/Profile";
 
 const ProtectedRoutes = ({ children }) => {
   const { isLoggedIn, isLoading } = useAuth();
@@ -25,6 +26,15 @@ const AppRoutes = () => {
       <Route path="/login" Component={Login} />
       <Route path="/register" Component={Register} />
       <Route path="/about" Component={About} />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoutes>
+            <Profile />
+          </ProtectedRoutes>
+        }
+      />
+
       <Route
         path="/"
         element={
