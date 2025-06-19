@@ -3,20 +3,10 @@ import Tashi from "../assets/team/profile.jpeg";
 import Sonam from "../assets/team/sonam.jpeg";
 import Sangay from "../assets/team/sangay.jpeg";
 import Norbu from "../assets/team/norbu.jpeg";
+import Nav from "../components/AboutNav";
 
 const About = () => {
   const styles = {
-    navbar: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "15px 30px",
-      backgroundColor: "#ff7043",
-      color: "white",
-      fontWeight: "bold",
-      fontSize: "1.5rem",
-      boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-    },
     logoutButton: {
       color: "white",
       textDecoration: "none",
@@ -103,14 +93,7 @@ const About = () => {
 
   return (
     <div>
-      <nav style={styles.navbar}>
-        <div className="logo">Druk Food Recipe</div>
-        <div className="nav-right">
-          <Link to="/login" style={styles.logoutButton}>
-            Login
-          </Link>
-        </div>
-      </nav>
+      <><Nav/></>
       <div style={styles.aboutContainer}>
         <h1>About Druk Food Recipe</h1>
 

@@ -60,19 +60,6 @@ const Nav = () => {
             }}
           >
             <Link
-              to="/about"
-              className="dropdown-item"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: "block",
-                padding: "10px",
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              About
-            </Link>
-            <Link
               to="/profile"
               className="dropdown-item"
               onClick={() => setMenuOpen(false)}
@@ -97,7 +84,7 @@ const Nav = () => {
                   color: "black",
                 }}
               >
-                Logout
+                Login
               </div>
             ) : (
               <Link

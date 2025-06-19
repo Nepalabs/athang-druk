@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../../components/RegisterNav";
 
 const initialData = {
   name: "",
@@ -48,14 +49,7 @@ const Register = () => {
 
   return (
     <div >
-      <nav className="navbar">
-        <div className="logo">Druk Food Recipe</div>
-        <div className="nav-right">
-          <Link to="/about" className="logout-button">
-            About
-          </Link>
-        </div>
-      </nav>
+      <><Nav/></>
 
       <div className="register-container">
 
