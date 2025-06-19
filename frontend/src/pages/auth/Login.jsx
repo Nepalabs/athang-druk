@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../../components/LoginNav";
 
 const initialData = {
   email: "",
@@ -38,14 +39,9 @@ const Login = () => {
   };
   return (
     <div>
-      <nav className="navbar">
-        <div className="logo">Druk Food Recipe</div>
-        <div className="nav-right">
-          <Link to="/about" className="logout-button">
-            About
-          </Link>
-        </div>
-      </nav>
+      <>
+        <Nav />
+      </>
       <div className="login-container">
         <form onSubmit={handleSubmit} className="login-form">
           <h2 className="login-title">Login</h2>

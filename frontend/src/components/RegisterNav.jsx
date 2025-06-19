@@ -72,19 +72,6 @@ const Nav = () => {
             >
               About
             </Link>
-            <Link
-              to="/profile"
-              className="dropdown-item"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: "block",
-                padding: "10px",
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              Profile
-            </Link>
 
             {user ? (
               <div
@@ -97,7 +84,7 @@ const Nav = () => {
                   color: "black",
                 }}
               >
-                Logout
+                Login
               </div>
             ) : (
               <Link
