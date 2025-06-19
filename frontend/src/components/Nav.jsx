@@ -27,7 +27,7 @@ const Nav = () => {
         padding: "1rem",
       }}
     >
-      <div className="nav-left">
+      <div>
         <Link to="/" className="logo">
           Druk Food Recipe
         </Link>

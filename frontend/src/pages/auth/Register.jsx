@@ -56,40 +56,45 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="register-form">
         <h2 className="register-title">Register</h2>
         <label>
-          Name
+          
           <input
+          placeholder="Name"
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             required
           />
-          Email
+
           <input
+          placeholder="Email"
             type="text"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
-          Password
+      
           <input
+          placeholder="Password"
             type="text"
             name="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
-          ConfrimPassword
+          
           <input
+          placeholder="ConfrimPassword"
             type="text"
             name="confrimPassword"
             value={formData.confrimPassword}
             onChange={handleChange}
             required
           />
-          PhoneNumber
+          
           <input
+          placeholder="PhoneNumber"
             type="text"
             name="phoneNumber"
             value={formData.phoneNumber}
@@ -111,6 +116,7 @@ const Register = () => {
 
             <label>
               <input
+              
                 type="radio"
                 name="gender"
                 value="female"

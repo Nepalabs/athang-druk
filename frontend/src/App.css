@@ -217,7 +217,7 @@
   font-style: italic;
 }
 
-.about-button{
+.about-button {
   background-color: white;
   color: #007bff;
   border: none;
@@ -226,7 +226,6 @@
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s ease;
-
 }
 
 .logout-button {
@@ -284,7 +283,7 @@ h1 {
 }
 
 .completed {
-  color:green;
+  color: green;
   font-size: 0.9em;
 }
 
@@ -333,7 +332,7 @@ h1 {
 }
 
 .form-actions {
- display: flex;
+  display: flex;
   justify-content: flex-end;
   gap: 10px;
 }

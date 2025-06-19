@@ -87,6 +87,33 @@ const Home = () => {
       </>
       <div className="food-container">
         <h1>Food Recipe List</h1>
+        <div className="recipe-container">
+          <div>
+            <h3>Creamy Garlic Mushroom Pasta</h3>
+            <div>
+              Ingredients: 200g spaghetti or pasta of your choice 1 tablespoon
+              olive oil 3 cloves garlic, minced 200g mushrooms, sliced (button
+              or cremini work well) 1 tablespoon butter 150ml heavy cream 50g
+              grated Parmesan cheese Salt and black pepper to taste Fresh
+              parsley (optional, for garnish)
+            </div>
+            <div>
+              Steps: Cook the Pasta Bring a large pot of salted water to a boil.
+              Cook the pasta according to the package instructions until al
+              dente. Drain and set aside. Sauté Garlic and Mushrooms In a large
+              pan, heat olive oil over medium heat. Add minced garlic and cook
+              for 30 seconds. Add sliced mushrooms and sauté until golden brown
+              and tender (about 5–6 minutes). Add Butter and Cream Stir in the
+              butter until melted, then pour in the heavy cream. Let it simmer
+              for 2–3 minutes. Add Cheese and Seasoning Add Parmesan cheese and
+              stir until melted and the sauce thickens slightly. Season with
+              salt and black pepper to taste. Mix Pasta and Serve Add the
+              drained pasta to the pan and toss well to coat with the creamy
+              mushroom sauce. Garnish and Enjoy! Serve hot, garnished with
+              freshly chopped parsley and extra Parmesan if desired.
+            </div>
+          </div>
+        </div>
         <button className="add-button" onClick={() => handleDialog(true)}>
           Add
         </button>
@@ -97,8 +124,8 @@ const Home = () => {
                 <div>
                   <p className="food-title">{food.name}</p>
                   <p>{food.ingredients}</p>
-                  <small>{food.steps}</small>
-                  {food.completed && <p className="completed">Completed</p>}
+                  <>{food.steps}</>
+                  <p>{food.cuisine}</p>
                 </div>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <button

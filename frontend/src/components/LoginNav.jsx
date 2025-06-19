@@ -85,35 +85,6 @@ const Nav = () => {
             >
               Profile
             </Link>
-
-            {user ? (
-              <div
-                onClick={handleLogout}
-                className="dropdown-item"
-                style={{
-                  display: "block",
-                  padding: "10px",
-                  cursor: "pointer",
-                  color: "black",
-                }}
-              >
-                Logout
-              </div>
-            ) : (
-              <Link
-                to="/login"
-                className="dropdown-item"
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  display: "block",
-                  padding: "10px",
-                  textDecoration: "none",
-                  color: "black",
-                }}
-              >
-                Login
-              </Link>
-            )}
           </div>
         )}
       </div>
