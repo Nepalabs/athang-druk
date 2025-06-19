@@ -45,12 +45,13 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("drukdragon-token");
       if (!token) {
+        
         setLoggedIn(false);
         setLoading(false);
         return;
+        
       }
-
-      await axios.delete("http://localhost:3000/auth/singout", {
+      await axios.delete("http://localhost:3000/auth/signout", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
