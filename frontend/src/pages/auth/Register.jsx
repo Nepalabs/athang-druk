@@ -98,29 +98,35 @@ const Register = () => {
         </p>
       </div>
 
-      {/* Form Section - Centered without container */}
+      {/* Form Section - Bigger and More Spacious */}
       <form
         onSubmit={handleSubmit}
         className="register-form"
         style={{
           width: "100%",
-          maxWidth: "500px",
+          maxWidth: "600px",
           margin: "0 auto",
           backgroundColor: "#ffffff",
-          padding: "30px",
+          padding: "40px 40px",
           borderRadius: "10px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0 6px 20px rgba(0, 0, 0, 0.12)",
+          fontSize: "1.1rem",
         }}
       >
         <h2
           className="form-header"
-          style={{ textAlign: "center", marginBottom: "20px" }}
+          style={{
+            textAlign: "center",
+            marginBottom: "30px",
+            fontSize: "2rem",
+            fontWeight: "700",
+          }}
         >
           Create Your Account
         </h2>
 
         <label
-          style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          style={{ display: "flex", flexDirection: "column", gap: "20px" }}
         >
           <input
             placeholder="Name"
@@ -129,6 +135,16 @@ const Register = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            style={{
+              padding: "16px 18px",
+              fontSize: "1.1rem",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+              outline: "none",
+              transition: "border-color 0.3s",
+            }}
+            onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
+            onBlur={(e) => (e.target.style.borderColor = "#ccc")}
           />
 
           <input
@@ -138,6 +154,16 @@ const Register = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            style={{
+              padding: "16px 18px",
+              fontSize: "1.1rem",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+              outline: "none",
+              transition: "border-color 0.3s",
+            }}
+            onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
+            onBlur={(e) => (e.target.style.borderColor = "#ccc")}
           />
 
           <input
@@ -147,6 +173,16 @@ const Register = () => {
             value={formData.password}
             onChange={handleChange}
             required
+            style={{
+              padding: "16px 18px",
+              fontSize: "1.1rem",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+              outline: "none",
+              transition: "border-color 0.3s",
+            }}
+            onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
+            onBlur={(e) => (e.target.style.borderColor = "#ccc")}
           />
 
           <input
@@ -156,6 +192,16 @@ const Register = () => {
             value={formData.confrimPassword}
             onChange={handleChange}
             required
+            style={{
+              padding: "16px 18px",
+              fontSize: "1.1rem",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+              outline: "none",
+              transition: "border-color 0.3s",
+            }}
+            onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
+            onBlur={(e) => (e.target.style.borderColor = "#ccc")}
           />
 
           <input
@@ -165,10 +211,23 @@ const Register = () => {
             value={formData.phoneNumber}
             onChange={handleChange}
             required
+            style={{
+              padding: "16px 18px",
+              fontSize: "1.1rem",
+              borderRadius: "6px",
+              border: "1px solid #ccc",
+              outline: "none",
+              transition: "border-color 0.3s",
+            }}
+            onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
+            onBlur={(e) => (e.target.style.borderColor = "#ccc")}
           />
 
-          <div className="gender-options" style={{ marginTop: "10px" }}>
-            <label style={{ marginRight: "10px" }}>
+          <div
+            className="gender-options"
+            style={{ marginTop: "15px", fontSize: "1.1rem" }}
+          >
+            <label style={{ marginRight: "20px" }}>
               <input
                 type="radio"
                 name="gender"
@@ -176,6 +235,7 @@ const Register = () => {
                 checked={formData.gender === "male"}
                 onChange={handleChange}
                 required
+                style={{ marginRight: "8px" }}
               />
               Male
             </label>
@@ -187,6 +247,7 @@ const Register = () => {
                 value="female"
                 checked={formData.gender === "female"}
                 onChange={handleChange}
+                style={{ marginRight: "8px" }}
               />
               Female
             </label>
@@ -196,7 +257,12 @@ const Register = () => {
         {error && (
           <p
             className="register-error"
-            style={{ color: "red", marginTop: "10px" }}
+            style={{
+              color: "red",
+              marginTop: "15px",
+              fontSize: "1.05rem",
+              fontWeight: "600",
+            }}
           >
             {error}
           </p>
@@ -205,24 +271,31 @@ const Register = () => {
         <button
           type="submit"
           style={{
-            marginTop: "20px",
-            padding: "10px 20px",
+            marginTop: "30px",
+            padding: "14px 24px",
             backgroundColor: "#e67e22",
             color: "#fff",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: "8px",
             cursor: "pointer",
-            fontWeight: "bold",
+            fontWeight: "700",
+            fontSize: "1.2rem",
+            transition: "background-color 0.3s",
           }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#cf711f")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#e67e22")}
         >
           Register
         </button>
 
         <p
           className="login-link"
-          style={{ marginTop: "15px", textAlign: "center" }}
+          style={{ marginTop: "25px", textAlign: "center", fontSize: "1.1rem" }}
         >
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account?{" "}
+          <Link to="/login" style={{ color: "#e67e22", fontWeight: "600" }}>
+            Login
+          </Link>
         </p>
       </form>
     </div>
