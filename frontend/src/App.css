@@ -385,3 +385,104 @@ h1 {
 .recipe-card button {
   margin-right: 0.5rem;
 }
+
+/* Cuisine Section Container */
+.cuisine-section {
+  max-width: 900px;
+  margin: 50px auto 80px;
+  padding: 0 20px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.cuisine-section h2 {
+  font-size: 2rem;
+  color: #b44d2d;
+  margin-bottom: 40px;
+}
+
+/* Cuisine Cards Container */
+.cuisine-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Each Cuisine Card */
+.cuisine-card {
+  background-color: #fffaf2;
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 250px;
+  box-shadow: 0 8px 15px rgba(160, 62, 40, 0.15);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover effect: scale & shadow */
+.cuisine-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(160, 62, 40, 0.3);
+}
+
+/* Cuisine Image */
+.cuisine-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  animation: floatUp 3s ease-in-out infinite alternate;
+}
+
+/* Float animation for image */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Cuisine Name */
+.cuisine-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a03e28;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* Underline animation */
+.cuisine-name::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #ff7043;
+  border-radius: 2px;
+  margin: 8px auto 0;
+  animation: underlineSlide 2.5s ease-in-out infinite;
+}
+
+@keyframes underlineSlide {
+  0%,
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Cuisine Description */
+.cuisine-desc {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+}
