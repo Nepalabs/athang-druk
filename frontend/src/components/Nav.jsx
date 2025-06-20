@@ -37,7 +37,12 @@ const Nav = () => {
         <div
           className="kebab-menu"
           onClick={toggleMenu}
-          style={{ fontSize: "24px", cursor: "pointer", userSelect: "none" }}
+          style={{
+            fontSize: "24px",
+            cursor: "pointer",
+            userSelect: "none",
+            color: "black",
+          }}
         >
           &#8942;
         </div>
