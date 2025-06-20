@@ -25,6 +25,11 @@ const getAllFoods = async (req, res) => {
   res.json({ foods });
 };
 
+const getAllCuisines = async (req, res) => {
+  const cuisines = await foodService.getAllCuisines();
+  res.json({ cuisines });
+};
+
 const getFoodById = async (req, res) => {
   const id = req.params.id;
 
@@ -51,7 +56,7 @@ const createFood = async (req, res) => {
   const newFood = req.body;
 
   const keys = Object.keys(newFood);
-  const requiredKeys = ["name", "ingredients", "steps", "cuisine"];
+  const requiredKeys = ["name", "ingredients", "steps", "cuisine", "imageUrl"];
   const missingKeys = requiredKeys.filter((key) => !keys.includes(key));
 
   if (missingKeys.length > 0) {
@@ -75,7 +80,7 @@ const updateFoodById = async (req, res) => {
   const newFood = req.body;
 
   const keys = Object.keys(newFood);
-  const requiredKeys = ["name", "ingredients", "steps", "cuisine"];
+  const requiredKeys = ["name", "ingredients", "steps", "cuisine", "imageUrl"];
   const missingKeys = requiredKeys.filter((key) => !keys.includes(key));
 
   if (missingKeys.length > 0) {
@@ -102,4 +107,5 @@ module.exports = {
   getFoodById,
   createFood,
   updateFoodById,
+  getAllCuisines,
 };

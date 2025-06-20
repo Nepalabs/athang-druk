@@ -1,7 +1,13 @@
+const Cuisine = require("../models/cuisine.model");
 const Food = require("../models/food.model");
 
 const getAllFoods = async (loggedInUserId, filter = {}) => {
   const foods = await Food.find({ userId: loggedInUserId, ...filter });
+  return foods;
+};
+
+const getAllCuisines = async () => {
+  const foods = await Cuisine.find();
   return foods;
 };
 
@@ -45,4 +51,5 @@ module.exports = {
   createFood,
   updateFoodById,
   deleteFoodById,
+  getAllCuisines,
 };
