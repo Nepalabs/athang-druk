@@ -23,7 +23,7 @@ const About = () => {
     aboutContainer: {
       maxWidth: "900px",
       margin: "40px auto",
-      padding: "0 20px",
+      padding: "1rem 20px",
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       color: "#333",
       lineHeight: "1.6",
@@ -93,7 +93,9 @@ const About = () => {
 
   return (
     <div>
-      <><Nav/></>
+      <>
+        <Nav />
+      </>
       <div style={styles.aboutContainer}>
         <h1>About Druk Food Recipe</h1>
 
