@@ -1,32 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { createFood, deleteFood, getAllFoods, updateFood } from "../api/api";
+import {
+  createFood,
+  deleteFood,
+  getAllFoods,
+  updateFood,
+  getAllCuisines,
+} from "../api/api";
 import Nav from "../components/Nav";
+import "./index.css";
 
-const cuisines = [
-  {
-    name: "Nepalese Cuisine",
-    key: "Nepal",
-    imgSrc:
-      "https://th.bing.com/th/id/OIP.pd-gmXaFHnqeOLAe9EaGyQHaES?r=0&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3",
-    desc: "Rich flavors of spices, momos, dal bhat, and hearty mountain food.",
-  },
-  {
-    name: "Bhutanese Cuisine",
-    key: "Bhutan",
-    imgSrc: "https://images.slurrp.com/prod/rich_article/u122yjpw7or.webp",
-    desc: "Unique dishes with chili, cheese, and locally sourced ingredients.",
-  },
-  {
-    name: "London Cuisine",
-    key: "London",
-    imgSrc:
-      "https://th.bing.com/th/id/OIP.uaIfs2UEpIePNV8m5pAauwHaEo?r=0&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3",
-    desc: "Diverse tastes from traditional fish & chips to multicultural street food.",
-  },
-];
-
-function CuisineSection({ onSelectCuisine, selectedCuisine }) {
+function CuisineSection({ onSelectCuisine, selectedCuisine, cuisines }) {
   return (
     <section className="cuisine-section">
       <h2>Explore World Cuisines</h2>
@@ -64,12 +48,14 @@ const initialData = {
   ingredients: "",
   steps: "",
   cuisine: "",
+  imageUrl: "", // this will hold preview URL for image display
   completed: false,
 };
 
 const Home = () => {
   const [form, setForm] = useState({ ...initialData });
   const [foods, setFoods] = useState([]);
+  const [cuisines, setCuisines] = useState([]);
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [selectedCuisine, setSelectedCuisine] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -83,6 +69,21 @@ const Home = () => {
     }
   }, [selectedCuisine]);
 
+  useEffect(() => {
+    const fetchCuisines = async () => {
+      try {
+        const response = await getAllCuisines();
+
+        setCuisines(response.data.cuisines);
+      } catch (error) {
+        console.error(error);
+        setCuisines([]);
+      }
+    };
+
+    fetchCuisines();
+  }, []);
+
   const fetchFoodsByCuisine = async (cuisineKey) => {
     setLoading(true);
     try {
@@ -94,42 +95,7 @@ const Home = () => {
           (food) => food.cuisine.toLowerCase() === cuisineKey.toLowerCase()
         );
       }
-
-      // If no foods found, add demo ones
-      if (filteredFoods.length === 0) {
-        const sampleData = [
-          {
-            _id: "demo1",
-            name: "Dal Bhat",
-            ingredients: "Rice, lentils, garlic, turmeric",
-            steps: "Boil lentils, cook rice, serve together.",
-            cuisine: "Nepal",
-            img: "https://cdn.shopify.com/s/files/1/0223/0981/files/Dal_Bhat_from_Nepal_curry_dhal_lentils_spinach_rice_yogurt.jpg?v=1618366911",
-          },
-          {
-            _id: "demo2",
-            name: "Phaksha Paa",
-            ingredients: "Pork, radish, red chili",
-            steps: "Cook pork with spices and radish.",
-            cuisine: "Bhutan",
-            img: "https://fis-api.luxuryholidaynepal.com/media/attachments/Phaksha%20Paa%20dish.jpg",
-          },
-          {
-            _id: "demo3",
-            name: "Full English Breakfast",
-            ingredients: "Eggs, sausage, bacon, beans, toast",
-            steps: "Fry ingredients, plate together.",
-            cuisine: "London",
-            img: "https://unpeeledjournal.com/wp-content/uploads/2023/04/52828774984_d60ccb1d98_b.jpg",
-          },
-        ];
-        const demo = sampleData.filter(
-          (f) => f.cuisine.toLowerCase() === cuisineKey.toLowerCase()
-        );
-        setFoods(demo);
-      } else {
-        setFoods(filteredFoods);
-      }
+      setFoods(filteredFoods);
     } catch (error) {
       console.error(error);
       setFoods([]);
@@ -161,16 +127,20 @@ const Home = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       let response;
+      // Otherwise send JSON normally (no file)
+      form.cuisine = selectedCuisine;
       if (isUpdate) {
         response = await updateFood(form._id, form);
       } else {
         response = await createFood(form);
       }
+
       if (response && response.data) {
         await fetchFoodsByCuisine(selectedCuisine);
+        setForm({ ...initialData });
         handleDialog(false);
       }
     } catch (error) {
@@ -184,6 +154,8 @@ const Home = () => {
     setForm(data);
   };
 
+  console.log(foods);
+
   return (
     <div>
       <Nav />
@@ -192,19 +164,29 @@ const Home = () => {
         <CuisineSection
           onSelectCuisine={setSelectedCuisine}
           selectedCuisine={selectedCuisine}
+          cuisines={cuisines}
         />
       )}
 
       {selectedCuisine && (
         <>
-          <div style={{ margin: "1rem 0" }}>
+          <div style={{ margin: "1rem 0", padding: "3rem" }}>
             <button onClick={() => setSelectedCuisine(null)}>
               ← Back to Cuisines
             </button>
             <h2>Recipes for {selectedCuisine} Cuisine</h2>
           </div>
 
-          <button className="add-button" onClick={() => handleDialog(true)}>
+          {/* Add margin top here to add space between this and above */}
+          <button
+            className="add-button"
+            onClick={() => handleDialog(true)}
+            style={{
+              marginTop: "1rem",
+              padding: "0.5rem 1rem",
+              fontSize: "1rem",
+            }}
+          >
             Add
           </button>
 
@@ -214,9 +196,9 @@ const Home = () => {
             <ul className="food-list">
               {foods.map((food) => (
                 <li key={food._id} className="food-item">
-                  {food.img && (
+                  {food.imageUrl && (
                     <img
-                      src={food.img}
+                      src={food.imageUrl}
                       alt={food.name}
                       style={{
                         maxWidth: "200px",
@@ -293,30 +275,28 @@ const Home = () => {
                 value={form.steps}
                 onChange={handleChange}
               />
-              <label>
-                Cuisine
-                <select
-                  name="cuisine"
-                  value={form.cuisine}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">-- Select Cuisine --</option>
-                  <option value="Bhutan">Bhutan</option>
-                  <option value="Nepal">Nepal</option>
-                  <option value="London">London</option>
-                  <option value="Italian">Italian</option>
-                  <option value="Chinese">Chinese</option>
-                  <option value="Indian">Indian</option>
-                  <option value="Mexican">Mexican</option>
-                  <option value="French">French</option>
-                  <option value="Japanese">Japanese</option>
-                  <option value="Thai">Thai</option>
-                  <option value="Greek">Greek</option>
-                  <option value="American">American</option>
-                  <option value="Spanish">Spanish</option>
-                </select>
-              </label>
+
+              <input
+                type="text"
+                name="imageUrl"
+                placeholder="Cusine Image URL"
+                value={form.imageUrl}
+                onChange={handleChange}
+                required
+              />
+              {form.imageUrl && (
+                <img
+                  src={form.imageUrl}
+                  alt="Preview"
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    marginBottom: "1rem",
+                    borderRadius: "8px",
+                  }}
+                />
+              )}
+
               <div className="form-action">
                 <button type="submit">{isUpdate ? "Update" : "Add"}</button>
               </div>

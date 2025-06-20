@@ -13,4 +13,8 @@ const updateFood = (id, data) => {
   return axios.put(`/food/${id}`, data);
 };
 
-export { getAllFoods, updateFood, deleteFood, createFood };
+const getAllCuisines = () => {
+  return axios.get(`/food/cuisines`);
+};
+
+export { getAllFoods, updateFood, deleteFood, createFood, getAllCuisines };

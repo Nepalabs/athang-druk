@@ -1,3 +1,14 @@
-/* :root {
-  background-image: url("https://as2.ftcdn.net/v2/jpg/08/63/15/59/1000_F_863155934_yV94C5vkL0wn5JQkKkJ6i6PyvmGfEEWd.jpg");
-} */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background-image: url("https://img.freepik.com/premium-photo/chinese-food-chinese-national-cuisine_233226-1336.jpg?w=900");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}

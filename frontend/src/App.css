@@ -196,15 +196,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #d8e0e7be;
+  color: rgb(205, 198, 198);
   font-size: 1.1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .logo {
   font-weight: bold;
   font-size: 1.3rem;
+  color: #843805;
 }
 
 .nav-right {
@@ -246,7 +252,8 @@
 .food-container {
   max-width: 600px;
   margin: 20px auto;
-  padding: 0 16px;
+  padding: 16px;
+  
 }
 
 h1 {
@@ -254,7 +261,7 @@ h1 {
 }
 
 .add-button {
-  background-color: #007bff;
+  background-color: #b77321;
   color: white;
   padding: 8px 16px;
   border: none;
@@ -265,17 +272,18 @@ h1 {
 
 .food-list {
   list-style-type: none;
-  padding: 0;
+  padding: 25px;
 }
 
 .food-item {
-  border: 1px solid #ccc;
+  border: 1px solid #e8cdcd;
   padding: 12px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 4px;
+  background-color: #cccccc96;
 }
 
 .food-title {
@@ -390,7 +398,7 @@ h1 {
 .cuisine-section {
   max-width: 900px;
   margin: 50px auto 80px;
-  padding: 0 20px;
+  padding: 1rem 20px;
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
@@ -412,7 +420,7 @@ h1 {
 
 /* Each Cuisine Card */
 .cuisine-card {
-  background-color: #fffaf2;
+  background-color: #fffaf2e3;
   border-radius: 15px;
   padding: 30px 25px;
   width: 250px;
