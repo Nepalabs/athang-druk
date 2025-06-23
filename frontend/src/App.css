@@ -493,3 +493,30 @@ h1 {
   color: #555;
   line-height: 1.4;
 }
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.profile-box {
+  background-color: #9f9a9a76;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(111, 54, 13, 0.808);
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.profile-box h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.user-details p {
+  margin: 0.5rem 0;
+}
