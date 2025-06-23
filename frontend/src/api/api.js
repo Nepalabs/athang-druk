@@ -22,6 +22,9 @@ const registerUser = (formData) => {
 const loginUser = (formData) => {
   return axios.post(`/auth/signin`, formData);
 };
+const getloginUser = () => {
+  return axios.get(`/auth/loggedin-user`);
+};
 
 export {
   getAllFoods,
@@ -31,4 +34,5 @@ export {
   getAllCuisines,
   registerUser,
   loginUser,
+  getloginUser,
 };

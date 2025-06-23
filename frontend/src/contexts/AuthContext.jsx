@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { getloginUser } from "../api/api";
 
 const AuthContext = createContext();
 
@@ -22,14 +23,11 @@ export const AuthProvider = ({ children }) => {
         return;
       }
 
-      const response = await axios.get(
-        "http://localhost:3000/auth/loggedin-user",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await getloginUser({
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setLoggedIn(true);
       setUser(response.data.user);
@@ -45,11 +43,9 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("drukdragon-token");
       if (!token) {
-        
         setLoggedIn(false);
         setLoading(false);
         return;
-        
       }
       await axios.delete("http://localhost:3000/auth/signout", {
         headers: {
