@@ -3,6 +3,7 @@ const cors = require("cors");
 const connectMongoDB = require("./db/mongo.db");
 const authRoutes = require("./routes/auth.route");
 const foodRoutes = require("./routes/food.routes");
+const { forntendUrl } = require("./config");
 
 const PORT = 3000;
 connectMongoDB();
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: forntendUrl,
     credentials: true,
   })
 );
