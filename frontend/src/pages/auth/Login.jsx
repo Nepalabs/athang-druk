@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "../../components/LoginNav";
+import { loginUser } from "../../api/api";
 
 const initialData = {
   email: "",
@@ -22,10 +23,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(
-        "http://localhost:3000/auth/signin",
-        formData
-      );
+      const response = await loginUser(formData);
 
       console.log(response.data);
       setError("");
@@ -46,8 +44,7 @@ const Login = () => {
         backgroundColor: "#fff8f0",
         minHeight: "100vh",
         paddingBottom: "40px",
-        backgroundImage:
-          "linear-gradient(120deg, #ffe0c1 0%, #fff8f0 100%)",
+        backgroundImage: "linear-gradient(120deg, #ffe0c1 0%, #fff8f0 100%)",
         animation: "fadeIn 1.5s ease-in-out",
       }}
     >

@@ -16,5 +16,19 @@ const updateFood = (id, data) => {
 const getAllCuisines = () => {
   return axios.get(`/food/cuisines`);
 };
+const registerUser = (formData) => {
+  return axios.post(`/auth/signup`, formData);
+};
+const loginUser = (formData) => {
+  return axios.post(`/auth/signin`, formData);
+};
 
-export { getAllFoods, updateFood, deleteFood, createFood, getAllCuisines };
+export {
+  getAllFoods,
+  updateFood,
+  deleteFood,
+  createFood,
+  getAllCuisines,
+  registerUser,
+  loginUser,
+};
