@@ -18,6 +18,7 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -37,17 +38,20 @@ const Login = () => {
       setError(error.response?.data?.message || "Some error occurred");
     }
   };
+
   return (
     <div
       style={{
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#fafafa",
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        backgroundColor: "#fff8f0",
         minHeight: "100vh",
         paddingBottom: "40px",
+        backgroundImage:
+          "linear-gradient(120deg, #ffe0c1 0%, #fff8f0 100%)",
+        animation: "fadeIn 1.5s ease-in-out",
       }}
     >
       <Nav />
-
       <div style={{ height: "40px" }} />
 
       <div
@@ -61,8 +65,7 @@ const Login = () => {
           textAlign: "center",
           maxWidth: "700px",
           margin: "0 auto 30px auto",
-          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-          border: "2px solidrgb(91, 165, 25)",
+          border: "2px solid rgba(230, 126, 34, 0.4)",
           fontSize: "1rem",
         }}
       >
@@ -93,11 +96,12 @@ const Login = () => {
           margin: "0 auto",
           backgroundColor: "#fff",
           padding: "40px 35px",
-          borderRadius: "12px",
-          boxShadow: "0 6px 15px rgba(0,0,0,0.1)",
+          borderRadius: "16px",
+          boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
           display: "flex",
           flexDirection: "column",
           gap: "28px",
+          animation: "slideUp 1.3s ease",
         }}
       >
         <h2
@@ -108,6 +112,7 @@ const Login = () => {
             marginBottom: "15px",
             fontWeight: "700",
             fontSize: "2rem",
+            letterSpacing: "0.03em",
           }}
         >
           Login
@@ -126,10 +131,16 @@ const Login = () => {
             borderRadius: "6px",
             border: "1px solid #ccc",
             outline: "none",
-            transition: "border-color 0.3s",
+            transition: "border-color 0.3s, transform 0.3s",
           }}
-          onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
-          onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+          onFocus={(e) => {
+            e.target.style.borderColor = "#e67e22";
+            e.target.style.transform = "scale(1.02)";
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = "#ccc";
+            e.target.style.transform = "scale(1)";
+          }}
         />
 
         <input
@@ -145,15 +156,20 @@ const Login = () => {
             borderRadius: "6px",
             border: "1px solid #ccc",
             outline: "none",
-            transition: "border-color 0.3s",
+            transition: "border-color 0.3s, transform 0.3s",
           }}
-          onFocus={(e) => (e.target.style.borderColor = "#e67e22")}
-          onBlur={(e) => (e.target.style.borderColor = "#ccc")}
+          onFocus={(e) => {
+            e.target.style.borderColor = "#e67e22";
+            e.target.style.transform = "scale(1.02)";
+          }}
+          onBlur={(e) => {
+            e.target.style.borderColor = "#ccc";
+            e.target.style.transform = "scale(1)";
+          }}
         />
 
         {error && (
           <p
-            className="register-error"
             style={{
               color: "#e74c3c",
               fontWeight: "600",
@@ -176,24 +192,46 @@ const Login = () => {
             border: "none",
             cursor: "pointer",
             fontWeight: "700",
-            transition: "background-color 0.3s",
+            transition: "all 0.3s",
           }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#cf711f")}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "#e67e22")}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = "#cf711f";
+            e.target.style.transform = "scale(1.03)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = "#e67e22";
+            e.target.style.transform = "scale(1)";
+          }}
         >
           Login
         </button>
 
-        <p
-          className="login-link"
-          style={{ textAlign: "center", fontSize: "1rem" }}
-        >
+        <p style={{ textAlign: "center", fontSize: "1rem" }}>
           Don’t have an account?{" "}
           <Link to="/register" style={{ color: "#e67e22", fontWeight: "600" }}>
             Register
           </Link>
         </p>
       </form>
+
+      {/* Keyframe styles */}
+      <style>{`
+        @keyframes slideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0 }
+          to { opacity: 1 }
+        }
+      `}</style>
     </div>
   );
 };
