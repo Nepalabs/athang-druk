@@ -171,9 +171,6 @@ const Home = () => {
       {selectedCuisine && (
         <>
           <div style={{ margin: "1rem 0", padding: "3rem" }}>
-            <button onClick={() => setSelectedCuisine(null)}>
-              ← Back to Cuisines
-            </button>
             <h2>Recipes for {selectedCuisine} Cuisine</h2>
           </div>
 
@@ -189,7 +186,12 @@ const Home = () => {
           >
             Add
           </button>
-
+          <button
+            onClick={() => setSelectedCuisine(null)}
+            style={{ display: "flex" }}
+          >
+            Go Back
+          </button>
           {loading ? (
             <p>Loading recipes...</p>
           ) : foods.length > 0 ? (
@@ -304,6 +306,41 @@ const Home = () => {
           </div>
         </div>
       )}
+      <footer
+        style={{
+          backgroundColor: "#fff3e6",
+          color: "#333",
+          textAlign: "center",
+          padding: "2rem 1rem",
+          marginTop: "4rem",
+          borderTop: "2px solid #e67e22",
+          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        }}
+      >
+        <h3
+          style={{
+            color: "#e67e22",
+            fontSize: "1.6rem",
+            marginBottom: "0.5rem",
+          }}
+        >
+          Druk Dragon Cuisine
+        </h3>
+        <p style={{ margin: "0.3rem 0", fontSize: "1rem" }}>
+          📧 Email:{" "}
+          <a href="mailto:contact@drukdrago.com">tashiyuden77@gmail.com</a>
+        </p>
+        <p style={{ margin: "0.3rem 0", fontSize: "1rem" }}>
+          ☎️ Contact: +975 77642934
+        </p>
+        <p style={{ margin: "0.3rem 0", fontSize: "1rem" }}>
+          📍 Address: Tashi Yoezerling, Bumthang, Bhutan
+        </p>
+        <p style={{ marginTop: "1rem", fontSize: "0.9rem", color: "#999" }}>
+          &copy; {new Date().getFullYear()} Druk Dragon Cuisine. All rights
+          reserved.
+        </p>
+      </footer>
     </div>
   );
 };

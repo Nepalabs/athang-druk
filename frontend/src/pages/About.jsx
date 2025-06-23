@@ -97,22 +97,37 @@ const About = () => {
         <Nav />
       </>
       <div style={styles.aboutContainer}>
-        <h1>About Druk Food Recipe</h1>
-
-        <p>
-          Druk Food Recipe is your go-to platform for exploring authentic
-          Bhutanese cuisine. Our goal is to preserve and share traditional
-          recipes passed down through generations, while also embracing modern
-          culinary twists.
-        </p>
-        <p>
-          Whether you're a seasoned cook or just getting started, our curated
-          recipes, tips, and community support will help you on your culinary
-          journey. Our team loves bonding over good food — exploring local
-          flavors, new cuisines, and hidden gems together. And Nothing brings us
-          closer than shared laughter and shared plates — food adventures are
-          our team tradition!!!
-        </p>
+        <div
+          style={{
+            backgroundColor: "#fff8f0",
+            padding: "25px 30px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 12px rgba(230, 126, 34, 0.15)",
+            color: "#4a4a4a",
+            lineHeight: "1.6",
+            textAlign: "center",
+            maxWidth: "700px",
+            margin: "0 auto 30px auto",
+            border: "2px solid rgba(230, 126, 34, 0.4)",
+            fontSize: "1rem",
+          }}
+        >
+          <h1>About Druk Food Recipe</h1>
+          <p>
+            Druk Food Recipe is your go-to platform for exploring authentic
+            Bhutanese cuisine. Our goal is to preserve and share traditional
+            recipes passed down through generations, while also embracing modern
+            culinary twists.
+          </p>
+          <p>
+            Whether you're a seasoned cook or just getting started, our curated
+            recipes, tips, and community support will help you on your culinary
+            journey. Our team loves bonding over good food — exploring local
+            flavors, new cuisines, and hidden gems together. And Nothing brings
+            us closer than shared laughter and shared plates — food adventures
+            are our team tradition!!!
+          </p>
+        </div>
         <div style={styles.teamSection}>
           <h2>Meet Our Team</h2>
           <div style={styles.teamMembers}>
